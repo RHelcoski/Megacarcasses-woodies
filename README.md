@@ -1,38 +1,49 @@
 # Megacarcasses-woodies
 
-This repository contains the R scripts, processed datasets, figures, and supporting files used for analyses presented in the dissertation chapter and manuscript examining how African savanna elephant megacarcasses influence woody vegetation structure, foliar chemistry, leaf traits, browse dynamics, soil resistance, and seedling recruitment in Kruger National Park, South Africa.
-
-The project investigates how long-lasting elephant cadaver decomposition islands (CDIs) restructure savanna vegetation through localized nutrient enrichment and physical disturbance. Analyses focus on spatial and temporal patterns in soil nutrients, foliar isotopes and chemistry, woody leaf traits, browsing pressure, and woody seedling establishment across carcass age gradients and contrasting basalt and granite soil systems.
+Code and processed datasets associated with analyses of elephant megacarcass effects on woody vegetation, browse dynamics, foliar chemistry, leaf traits, soil resistance, and seedling recruitment in Kruger National Park, South Africa.
 
 ## Repository contents
 
-* `code_woody_all_v3.qmd` — Primary Quarto workflow used for data processing, statistical analyses, model selection, and figure generation.
-* `data/` — Processed datasets used in analyses, including foliar chemistry, leaf traits, browse, seedling, and soil resistance datasets.
-* `figures/` — Output figures generated for manuscript preparation.
-* `tables/` — Supplemental tables including model selection outputs and coefficient summaries.
-* `supplemental/` — Additional supporting material and exported outputs.
+### Analysis workflow
 
-## Analytical overview
+* `code_woody_all_publication.qmd`
+  Main Quarto workflow used for data processing, statistical analyses, model selection, and figure generation.
 
-Analyses were conducted in R using generalized linear mixed models (GLMMs) implemented primarily through `glmmTMB`, with model diagnostics evaluated using `DHARMa`. Candidate models evaluated the effects of:
+### raw datasets
 
-* distance from CDI center,
+* `soil_leaf_chem.csv` — Soil and foliar chemistry data
+* `leaf_traits.csv` — Woody leaf trait measurements
+* `vert_browse.csv` — Woody browse survey data
+* `soil_resistance.csv` — Soil penetration resistance data
+* `seedlings.csv` — Woody seedling survey data
+
+### Model outputs
+
+* `model_selection_and_coefficients.xlsx`
+  Candidate model rankings, ΔAICc values, Akaike weights, parameter estimates, and model summaries for all primary response variables.
+
+## Study overview
+
+This project examines how African savanna elephant megacarcasses function as long-lasting cadaver decomposition islands (CDIs) that restructure local nutrient dynamics, woody vegetation responses, browsing pressure, and seedling recruitment across spatial and temporal gradients.
+
+Fieldwork was conducted in Kruger National Park, South Africa, across carcass sites spanning a multi-year postmortem age gradient and contrasting basalt and granite soil systems.
+
+## Analytical approach
+
+Analyses were conducted in R using generalized linear mixed models (GLMMs), primarily implemented through `glmmTMB`. Candidate models evaluated the effects of:
+
+* distance from carcass center,
 * soil type,
-* carcass age,
-* sampling year,
-* and their interactions,
+* years postmortem,
+* and sampling year,
 
-while accounting for repeated sampling structure using random intercepts for site.
+with site included as a random effect where appropriate.
 
-Model families included Gamma (log link), Gaussian, and binomial-logit formulations depending on response structure and diagnostic performance.
-
-## Study system
-
-Field data were collected across elephant megacarcass sites distributed throughout Kruger National Park, South Africa, spanning carcasses ranging from recent mortality events to sites more than seven years postmortem. Sampling incorporated both carcass and paired matrix/control locations across multiple years.
+Model diagnostics were evaluated using `DHARMa`, and model selection was conducted using AICc-based approaches.
 
 ## Reproducibility
 
-All analyses and figure-generation workflows are contained within the repository to support transparency and reproducibility. Paths may need minor adjustment depending on local directory structure.
+The repository is intended to support analytical transparency and reproducibility. Some file paths may require adjustment depending on local directory structure.
 
 ## Author
 
@@ -40,4 +51,6 @@ Ryan Helcoski
 Department of Wildland Resources
 Utah State University
 
-Collaborative contributions and manuscript coauthors are acknowledged within associated manuscripts and supplemental materials.
+## Acknowledgments
+
+We thank South African National Parks (SANParks), collaborating researchers, and field assistants who supported field sampling and logistics associated with this project.
